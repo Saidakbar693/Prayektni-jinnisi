@@ -1,23 +1,36 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+  const [openDiv, setOpenDiv] = useState(false);
+  const openConfig =(e) =>  {
+      const tableConfig =document.querySelector('.table__config');
+
+      if (openDiv === false){
+      tableConfig.classList.add('active')
+      setOpenDiv(true);
+    }
+
+
+    else {
+       tableConfig.classList.remove('active');
+       setOpenDiv(false);
+    }
+
+}
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <div className="container">
+    <button onClick={openConfig} className="open__button">Open Config</button>
+    <div className="table__config">
+      
+    
+    </div>
+    </div>
     </div>
   );
 }
